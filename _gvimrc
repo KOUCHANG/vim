@@ -1,0 +1,101 @@
+"‰æ–Êİ’è
+set cmdheight=1
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set guioptions-=T
+set linespace=0
+set lines=50
+set columns=130
+set gfn=‚l‚r_ƒSƒVƒbƒN:h11:cSHIFTJIS
+set fencs=ucs-bom,ucs-2le,ucs-2,iso-2022-jp-3,utf-8,euc-jisx0213,euc-jp
+
+"ƒJƒbƒgƒAƒ“ƒhƒy[ƒXƒg‚Ìİ’è
+vmap <C-C> "+y
+vmap <C-P> "+p
+
+"g—p’†‚ÌƒL[ƒ{[ƒh‚É“Á‰»‚µ‚½İ’è(Shift‚ÌÛw‚ª‚·‚×‚é‚Æ”j–ÅEE)
+imap <S-Up> <Up>
+imap <S-Down> <Down>
+
+"ƒGƒ‰[ƒŠƒXƒg‚ÌØ‚è‘Ö‚¦§Œä
+nmap <C-Up>    :cp<CR>
+nmap <C-Down>  :cn<CR>
+nmap <C-Left>  :col<CR>
+nmap <C-Right> :cnew<CR>
+
+"ƒoƒbƒtƒ@ˆÚ“®
+nmap <S-Left>  :bp<CR>
+nmap <S-Right> :bn<CR>
+
+"ƒEƒBƒ“ƒhˆÚ“®
+nmap <C-S-Left>  <C-W>w
+nmap <C-S-Right> <C-W><S-W>
+"nmap <C-Tab>     <C-W>w
+nmap <C-Tab>     :tabn<CR>
+"nmap <C-S-Tab>   <C-W><S-W>
+nmap <C-S-Tab>   :tabp<CR>
+
+"ƒ^ƒu‘€ì
+nmap <A-Left>   :tabp<CR>
+nmap <A-Right>  :tabn<CR>
+nmap <C-W><C-H> :tabp<CR>
+nmap <C-W><C-L> :tabn<CR>
+nmap <C-W><C-N> :tabe <C-R>%<CR>
+nmap <C-W><C-Q> :tabc<CR>
+nmap <C-W>1     :tabn 1<CR>
+nmap <C-W>2     :tabn 2<CR>
+nmap <C-W>3     :tabn 3<CR>
+nmap <C-W>4     :tabn 4<CR>
+nmap <C-W>5     :tabn 5<CR>
+nmap <C-W>6     :tabn 6<CR>
+nmap <C-W>7     :tabn 7<CR>
+nmap <C-W>8     :tabn 8<CR>
+nmap <C-W>9     :tabn 9<CR>
+
+"ƒIƒ€ƒj•âŠ®
+imap <C-B> <C-X><C-O>
+"VC‚ÌƒCƒ“ƒNƒ‹[ƒh‚ğŠÜ‚ß‚é
+"set tags=tags,D:\home\vimfiles\tags
+
+"tags‚Ìì¬
+"gtagsŒü‚¯tagsì¬
+nmap <C-F11> :!gtags -v<CR>
+"ƒIƒ€ƒj•âŠ®Œü‚¯tagsì¬
+nmap <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+"gtagsƒRƒ}ƒ“ƒhŠg’£
+"nmap <C-K>g     :Gtags -g <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K>r     :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K>s     :Gtags -s <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K>j     :Gtags    <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K><C-G> :Gtags -g <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K><C-R> :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K><C-S> :Gtags -s <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-K><C-J> :Gtags    <C-R>=expand("<cword>")<CR><CR>
+
+"netrw‚Í’x‚¢‚Ì‚Å“Ç‚İ‚Ü‚È‚¢
+"let loaded_netrw = 1
+"E‚Å‚Í‚È‚­ƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ‚ğŠJ‚¯‚Î’x‚­‚È‚©‚Á‚½B
+"cmap E<CR>  e .<CR>
+"cmap ve<CR> e .<CR>
+
+""ƒŠƒ‚[ƒg‰{——‚Ìê‡‚Ì‚İƒfƒBƒŒƒNƒgƒŠˆê——‚ÌÄ—˜—p‚ğs‚¤B (ƒfƒtƒHƒ‹ƒg’l)
+"let g:netrw_fastbrowse=1
+"‘‚¢‰{——A‰{——‚µ‚½‚±‚Æ‚ª‚È‚¢ƒfƒBƒŒƒNƒgƒŠ(‚à‚µ‚­‚Í |netrw-ctrl-l| ‚ªs‚í‚ê‚½)‚¾‚¯“à—e‚Ìæ“¾‚ğs‚¤
+let g:netrw_fastbrowse=2
+
+"DirDiff.vimŒü‚¯‚Ìİ’è
+let g:DirDiffExcludes=".svn,*.o,*.d,*.a"
+
+"•ÒW‹­‰»ƒRƒ}ƒ“ƒh
+"imap { {<CR><CR>}<ESC>kS
+"imap ( (  )<ESC>hi
+"imap [ []<ESC>i
+"imap /*<SPACE> /*  */<ESC>hhi
+"imap /*- /*<ESC>70a-A<CR><CR><ESC>68a-A*/<ESC>kA<SPACE>
+"imap /*<CR> /*<CR><CR><C-H><C-H>*/<ESC>kA<SPACE>
+"imap fori for(i=0; i<; i++<ESC>hhhhi
+"imap forj for(j=0; j<; j++<ESC>hhhhi
+"nmap + A;<ESC>
+
+hi DiffText term=bold,underline ctermbg=13 gui=none guibg=LightYellow
+
