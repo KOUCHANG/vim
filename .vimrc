@@ -53,12 +53,6 @@
  " which are considered to add usability. Which, if any, of these options to
  " use is very much a personal preference, but they are harmless.
  
- " Use case insensitive search, except when using capital letters
- " 検索時に大文字・小文字を区別しない。ただし、検索後に大文字小文字が
- " 混在しているときは区別する
- set ignorecase
- set smartcase
- 
  " Allow backspacing over autoindent, line breaks and start of insert action
  " オートインデント、改行、インサートモード開始直後にバックスペースキーで
  " 削除できるようにする。
@@ -124,28 +118,6 @@
  set pastetoggle=<F11>
  
  "------------------------------------------------------------
- " Indentation options {{{1
- " インデント関連のオプション {{{1
- "
- " Indentation settings according to personal preference.
- 
- " Indentation settings for using 2 spaces instead of tabs.
- " Do not change 'tabstop' from its default value of 8 with this setup.
- " タブ文字の代わりにスペース2個を使う場合の設定。
- " この場合、'tabstop'はデフォルトの8から変えない。
- set shiftwidth=2
- set softtabstop=2
- set expandtab
- 
- " Indentation settings for using hard tabs for indent. Display tabs as
- " two characters wide.
- " インデントにハードタブを使う場合の設定。
- " タブ文字を2文字分の幅で表示する。
- "set shiftwidth=2
- "set tabstop=2
- 
- 
- "------------------------------------------------------------
  " Mappings {{{1
  " マッピング
  "
@@ -208,4 +180,21 @@ if has('iconv')
   unlet s:enc_jis
 endif
 
+
+"-------------------------------------------------------
+"added by KOU_CHANG
 set list listchars=tab:^_,trail:_
+
+"tab setting
+set shiftwidth=4
+set tabstop=4
+
+"tab control
+noremap <silent> <C-H> :tabp<CR>
+noremap <silent> <C-J> :tabp<CR>
+noremap <silent> <C-K> :tabn<CR>
+noremap <silent> <C-L> :tabn<CR>
+noremap <silent> <ESC><ESC> :nohlsearch<CR>
+
+"tag jump
+noremap <C-]> g<C-]>
