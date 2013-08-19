@@ -102,7 +102,7 @@
  " Set the command window height to 2 lines, to avoid many cases of having to
  " "press <Enter> to continue"
  " コマンドラインの高さを2行に
- set cmdheight=2
+ set cmdheight=1 " KOU_CHANG
  
  " Display line numbers on the left
  " 行番号を表示
@@ -191,10 +191,13 @@ set tabstop=4
 
 "tab control
 noremap <silent> <C-H> :tabp<CR>
-noremap <silent> <C-J> :tabp<CR>
-noremap <silent> <C-K> :tabn<CR>
+noremap <silent> <C-J> :tabn<CR>
+noremap <silent> <C-K> :tabp<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <ESC><ESC> :nohlsearch<CR>
 
 "tag jump
 noremap <C-]> g<C-]>
+
+"*serch
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
