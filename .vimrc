@@ -191,13 +191,17 @@ set tabstop=4
 
 "tab control
 noremap <silent> <C-H> :tabp<CR>
-noremap <silent> <C-J> :tabn<CR>
-noremap <silent> <C-K> :tabp<CR>
 noremap <silent> <C-L> :tabn<CR>
 noremap <silent> <ESC><ESC> :nohlsearch<CR>
+
+"error window next(pre) line
+noremap <silent> <C-J> :cn<CR>
+noremap <silent> <C-K> :cN<CR>
 
 "tag jump
 noremap <C-]> g<C-]>
 
 "*serch
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+"vim grep
+nnoremap <expr> gr ':vimgrep ;\<' . expand('<cword>') . '\>; **/*.erl \| cw'
