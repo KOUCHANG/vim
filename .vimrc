@@ -182,6 +182,8 @@ endif
 
 
 "-------------------------------------------------------
+set tabpagemax=20
+
 "added by KOU_CHANG
 set list listchars=tab:^_,trail:_
 
