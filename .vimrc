@@ -206,4 +206,4 @@ noremap <C-]> g<C-]>
 "*serch
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 "vim grep
-nnoremap <expr> gr ':vimgrep ;\<' . expand('<cword>') . '\>; **/*.erl \| cw'
+nnoremap <expr> gr ':vimgrep ;\<' . expand('<cword>') . '\>; **/*.' . expand("%:e") . ' \| cw'
