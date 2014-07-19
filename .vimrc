@@ -213,6 +213,18 @@ NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
+" erlangのシンタクスハイライト
+NeoBundle 'vim-erlang/vim-erlang-runtime'
+" erlangのオムニ補完
+NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+
+""""" erlang用設定 """"""""
+" erlファイルをerlangとして認識する
+" au BufNewFile,BufRead *.erl setf erlang
+" :makeでerlang構文チェック
+au FileType erlang setlocal makeprg=erlc\ %
+au FileType erlang setlocal errorformat=%f:%l:\ %m
+
 filetype plugin indent on     " required!
 filetype indent on
 syntax on

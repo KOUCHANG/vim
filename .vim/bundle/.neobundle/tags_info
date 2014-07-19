@@ -6,6 +6,8 @@ neosnippet
 neosnippet-snippets
 syntastic
 unite.vim
+vim-erlang-omnicomplete
+vim-erlang-runtime
 vim-slime
 vimproc
 vimshell

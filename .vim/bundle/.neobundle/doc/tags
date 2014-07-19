@@ -1181,6 +1181,11 @@ v_<Plug>(vimshell_select_previous_prompt)	vimshell.txt	/*v_<Plug>(vimshell_selec
 v_<c-c><c-c>	vim-slime.txt	/*v_<c-c><c-c>*
 v_CTRL-C_CTRL-C	vim-slime.txt	/*v_CTRL-C_CTRL-C*
 v_vimshell_default_key_mappings	vimshell.txt	/*v_vimshell_default_key_mappings*
+vim-erlang-omnicomplete	vim-erlang-omnicomplete.txt	/*vim-erlang-omnicomplete*
+vim-erlang-omnicomplete-contributing	vim-erlang-omnicomplete.txt	/*vim-erlang-omnicomplete-contributing*
+vim-erlang-omnicomplete-credits	vim-erlang-omnicomplete.txt	/*vim-erlang-omnicomplete-credits*
+vim-erlang-omnicomplete-intro	vim-erlang-omnicomplete.txt	/*vim-erlang-omnicomplete-intro*
+vim-erlang-omnicomplete.txt	vim-erlang-omnicomplete.txt	/*vim-erlang-omnicomplete.txt*
 vim_complete	neocomplcache.txt	/*vim_complete*
 vimclojure.txt	clojure.txt	/*vimclojure.txt*
 vimproc	vimproc.txt	/*vimproc*
