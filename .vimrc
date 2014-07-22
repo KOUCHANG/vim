@@ -222,7 +222,7 @@ NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
 " erlファイルをerlangとして認識する
 " au BufNewFile,BufRead *.erl setf erlang
 " :makeでerlang構文チェック
-au FileType erlang setlocal makeprg=erlc\ %
+" au FileType erlang setlocal makeprg=erlc\ %
 au FileType erlang setlocal errorformat=%f:%l:\ %m
 
 filetype plugin indent on     " required!
