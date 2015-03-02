@@ -274,3 +274,15 @@ nnoremap <expr> gr ':vimgrep ;\<' . expand('<cword>') . '\>; **/*.' . expand("%:
 
 " オムニ補完を<C-F>でできるようにする
 imap <C-f> <C-x><C-o>
+
+function! ErlangTagsSettings()
+  if exists(":ErlangTags")
+    echom "ErlangTags detected"
+    let g:erlang_tags_ignore = "**/.eunit"
+  else
+    echom "Could not detect ErlangTags plugin"
+  endif
+endfunction
+
+autocmd VimEnter * call ErlangTagsSettings()
+
