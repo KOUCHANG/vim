@@ -196,8 +196,10 @@ set tabstop=4
 filetype off
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    "call neobundle#rc(expand('~/.vim/bundle/'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shogo/neobundle.vim'
 endif
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
@@ -217,6 +219,11 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'vim-erlang/vim-erlang-runtime'
 " erlangのオムニ補完
 NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+
+NeoBundle 'vim-jp/vimdoc-ja'
+:set helplang=ja,en
+
+call neobundle#end()
 
 """"" erlang用設定 """"""""
 " erlファイルをerlangとして認識する
