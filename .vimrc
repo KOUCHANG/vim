@@ -1,3 +1,4 @@
+set expandtab
 
 set nocompatible
 
@@ -39,6 +40,7 @@ set showcmd
 " mapping of <C-L> below)
 " 検索語を強調表示（<C-L>を押すと現在の強調表示を解除する）
 set hlsearch
+set incsearch
 
 " Modelines have historically been a source of security vulnerabilities.  As
 " such, it may be a good idea to disable them and use the securemodelines
