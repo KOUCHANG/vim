@@ -216,6 +216,10 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+
+" <C-C> でコピーしたいために下記フラグを指定
+" https://github.com/jpalardy/vim-slime#advanced-configuration
+let g:slime_no_mappings = 1
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
@@ -280,3 +284,8 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 " }}}
+
+" カットアンドペーストの設定
+vmap <C-C> "+y
+" vmap <C-V> "+p
+
