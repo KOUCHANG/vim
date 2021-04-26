@@ -189,6 +189,7 @@ endif
 "-------------------------------------------------------
 set tabpagemax=20
 
+
 "added by KOU_CHANG
 set list listchars=tab:^_,trail:_
 
@@ -196,16 +197,29 @@ set list listchars=tab:^_,trail:_
 set shiftwidth=4
 set tabstop=4
 
-
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
 " set nocompatible               " be iMproved
 filetype off
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    "call neobundle#rc(expand('~/.vim/bundle/'))
-    call neobundle#begin(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shogo/neobundle.vim'
 endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
+
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
@@ -222,12 +236,22 @@ NeoBundle 'Shougo/neosnippet-snippets'
 let g:slime_no_mappings = 1
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+"NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
 " erlangのシンタクスハイライト
 NeoBundle 'vim-erlang/vim-erlang-runtime'
 " erlangのオムニ補完
 NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+NeoBundle 'vim-erlang/vim-erlang-tags'
+NeoBundle 'vim-erlang/vim-erlang-compiler'
+NeoBundle 'vim-erlang/erlang-motions.vim'
+NeoBundle 'vim-erlang/vim-rebar'
+NeoBundle 'vim-erlang/vim-dialyzer'
+NeoBundle 'vim-erlang/vim-erlang-skeletons'
+
+" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+NeoBundleCheck
 
 NeoBundle 'vim-jp/vimdoc-ja'
 
@@ -245,12 +269,9 @@ NeoBundle 'kannokanno/previm'
 
 call neobundle#end()
 
-""""" erlang用設定 """"""""
-" erlファイルをerlangとして認識する
-" au BufNewFile,BufRead *.erl setf erlang
-" :makeでerlang構文チェック
-" au FileType erlang setlocal makeprg=erlc\ %
-au FileType erlang setlocal errorformat=%f:%l:\ %m
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
 
 filetype plugin indent on     " required!
 filetype indent on
@@ -273,6 +294,26 @@ noremap <C-]> g<C-]>
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 "vim grep
 nnoremap <expr> gr ':vimgrep ;\<' . expand('<cword>') . '\>; **/*.' . expand("%:e") . ' \| cw'
+
+" オムニ補完を<C-F>でできるようにする
+imap <C-f> <C-x><C-o>
+
+function! ErlangTagsSettings()
+  if exists(":ErlangTags")
+    echom "ErlangTags detected"
+    let g:erlang_tags_ignore = "**/.eunit"
+  else
+    echom "Could not detect ErlangTags plugin"
+  endif
+endfunction
+
+autocmd VimEnter * call ErlangTagsSettings()
+
+" vimdiffの色設定
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
 " MacVimをMarkdownプレビュー＆編集ツールにする - Qiita
 " https://qiita.com/watanata/items/c5dc698afef32284f5c1
