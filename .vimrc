@@ -1,15 +1,13 @@
 set expandtab
 
-set nocompatible
-
 " for Mac
 set antialias
 
 " file type
 filetype indent plugin on
 
-" syntax highlighting
-syntax on
+"" syntax highlighting
+"syntax on
 colorscheme ron
 highlight LineNr ctermfg=darkgrey
 
@@ -193,89 +191,76 @@ set tabpagemax=20
 "added by KOU_CHANG
 set list listchars=tab:^_,trail:_
 
-"tab setting
+" tab setting
 set shiftwidth=4
 set tabstop=4
 
-"---------------------------
-" Start Neobundle Settings.
-"---------------------------
-" set nocompatible               " be iMproved
 filetype off
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+" Dein Setting begin
+
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/dein'))
+
+" Let dein manage dein
+call dein#add('Shougo/dein.vim')
+if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" Installation check.
-if neobundle#exists_not_installed_bundles()
-  echomsg 'Not installed bundles : ' .
-        \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute ":NeoBundleInstall" command.'
-  "finish
-endif
-
-" neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-
+" Add or remove your plugins here like this:
 " originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+call dein#add('Shougo/vimproc.vim')
+call dein#add('vim-script/VimClojure')
+call dein#add('Shougo/vimshell')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neocomplcache')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
 " <C-C> でコピーしたいために下記フラグを指定
 " https://github.com/jpalardy/vim-slime#advanced-configuration
 let g:slime_no_mappings = 1
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+call dein#add('jpalardy/vim-slime')
+call dein#add('scrooloose/syntastic')
+""call dein#add('https://bitbucket.org/kovisoft/slimv')
 
 " erlangのシンタクスハイライト
-NeoBundle 'vim-erlang/vim-erlang-runtime'
+call dein#add('vim-erlang/vim-erlang-runtime')
 " erlangのオムニ補完
-NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
-NeoBundle 'vim-erlang/vim-erlang-tags'
-NeoBundle 'vim-erlang/vim-erlang-compiler'
-NeoBundle 'vim-erlang/erlang-motions.vim'
-NeoBundle 'vim-erlang/vim-rebar'
-NeoBundle 'vim-erlang/vim-dialyzer'
-NeoBundle 'vim-erlang/vim-erlang-skeletons'
+call dein#add('vim-erlang/vim-erlang-omnicomplete')
 
-" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
-NeoBundleCheck
-
-NeoBundle 'vim-jp/vimdoc-ja'
+call dein#add('vim-jp/vimdoc-ja')
 
 " Markdown
 " Vim + Markdown - Qiita
 " https://qiita.com/iwataka/items/5355bdf03d0afd82e7a7
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'iwataka/vim-markdown-ex'
+call dein#add('tpope/vim-markdown')
+call dein#add('iwataka/vim-markdown-ex')
 
 " MacVimをMarkdownプレビュー＆編集ツールにする - Qiita
 " https://qiita.com/watanata/items/c5dc698afef32284f5c1
-NeoBundle 'kannokanno/previm'
+call dein#add('kannokanno/previm')
+
+call dein#end()
+
+" Required by dein
+filetype plugin indent on
+syntax enable
+
+" Dein Settings End
+
+filetype indent on
 
 :set helplang=ja,en
-
-call neobundle#end()
 
 "-------------------------
 " End Neobundle Settings.
 "-------------------------
-
-filetype plugin indent on     " required!
-filetype indent on
-syntax on
 
 
 "tab control
@@ -329,4 +314,10 @@ augroup END
 " カットアンドペーストの設定
 vmap <C-C> "+y
 " vmap <C-V> "+p
+
+" vimdiffの色設定
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
