@@ -258,10 +258,6 @@ filetype indent on
 
 :set helplang=ja,en
 
-"-------------------------
-" End Neobundle Settings.
-"-------------------------
-
 
 "tab control
 noremap <silent> <C-H> :tabp<CR>
@@ -293,12 +289,6 @@ function! ErlangTagsSettings()
 endfunction
 
 autocmd VimEnter * call ErlangTagsSettings()
-
-" vimdiffの色設定
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
 " MacVimをMarkdownプレビュー＆編集ツールにする - Qiita
 " https://qiita.com/watanata/items/c5dc698afef32284f5c1
