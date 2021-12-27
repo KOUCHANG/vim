@@ -222,17 +222,23 @@ call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
+call dein#add('tsukkee/unite-tag')
+call dein#add('cohama/vim-hier')
+
 " <C-C> でコピーしたいために下記フラグを指定
 " https://github.com/jpalardy/vim-slime#advanced-configuration
 let g:slime_no_mappings = 1
 call dein#add('jpalardy/vim-slime')
 call dein#add('scrooloose/syntastic')
-""call dein#add('https://bitbucket.org/kovisoft/slimv')
+"call dein#add('https://bitbucket.org/kovisoft/slimv')
 
 " erlangのシンタクスハイライト
 call dein#add('vim-erlang/vim-erlang-runtime')
-" erlangのオムニ補完
-call dein#add('vim-erlang/vim-erlang-omnicomplete')
+"" erlangのオムニ補完
+"call dein#add('vim-erlang/vim-erlang-omnicomplete')
+
+"call dein#add('vim-erlang/vim-erlang-compiler')
+call dein#add('vim-erlang/vim-erlang-tags')
 
 call dein#add('vim-jp/vimdoc-ja')
 
@@ -253,6 +259,15 @@ filetype plugin indent on
 syntax enable
 
 " Dein Settings End
+
+"" neocomplete
+"let g:neocomplete#enable_at_startup = 1
+"autocmd FileType erlang setlocal omnifunc=erlang_complete#Complete
+"if !exists('g:neocomplete#force_omni_input_patterns')
+"  let g:neocomplete#force_omni_input_patterns = {}
+"let g:neocomplete#force_omni_input_patterns.erlang =
+"      \ '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
+"endif
 
 filetype indent on
 
